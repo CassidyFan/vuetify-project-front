@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="main-box">
     <v-col cols="12">
       <h1 class="text-center">購物車</h1>
     </v-col>
@@ -20,9 +20,11 @@
         </template>
       </v-data-table>
     </v-col>
-    <v-col cols="12" class="text-center">
+    <v-col cols="12" class="text-end">
       <p>總金額: {{ total }}</p>
-      <v-btn color="green" :disabled="!canCheckout" @click="checkout">結帳</v-btn>
+      <v-divider></v-divider>
+      <br>
+      <v-btn color="black" :disabled="!canCheckout" @click="checkout">結帳</v-btn>
     </v-col>
   </v-container>
 </template>
@@ -34,10 +36,11 @@ import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/stores/user'
+import Swal from 'sweetalert2'
 
 definePage({
   meta: {
-    title: '購物網 | 購物車',
+    title: 'qwiyeo | 購物車',
     login: true,
     admin: false
   }
@@ -45,7 +48,7 @@ definePage({
 
 const { apiAuth } = useApi()
 const router = useRouter()
-const createSnackbar = useSnackbar()
+// const createSnackbar = useSnackbar()
 const user = useUserStore()
 
 const items = ref([])
@@ -63,11 +66,14 @@ const loadItems = async () => {
     items.value = data.result
   } catch (error) {
     console.log(error)
-    createSnackbar({
-      text: error?.response?.data?.message || '發生錯誤',
-      snackbarProps: {
-        color: 'red'
-      }
+    Swal.fire({
+      title: error?.response?.data?.message || '發生錯誤',
+      icon: 'error',
+      showConfirmButton: false,
+      timer: 2000,
+      background: '#f4f4f4',
+      color: '#41807c',
+      width: 300,
     })
   }
 }
@@ -89,11 +95,14 @@ const checkout = async () => {
 
   const result = await user.checkout()
 
-  createSnackbar({
-    text: result.text,
-    snackbarProps: {
-      color: result.color
-    }
+  Swal.fire({
+    title: result.text,
+    icon: result.color === 'red' ? 'error' : 'success',
+    showConfirmButton: false,
+    timer: 2000,
+    background: '#f4f4f4',
+    color: '#41807c',
+    width: 300,
   })
 
   if (result.color === 'green') {
@@ -102,4 +111,31 @@ const checkout = async () => {
 
   loading.value = false
 }
+
+const addCart = async (product, quantity) => {
+  const result = await user.addCart(product, quantity)
+  Swal.fire({
+    title: result.text,
+    icon: result.color === 'red' ? 'error' : 'success',
+    showConfirmButton: false,
+    timer: 2000,
+    background: '#f4f4f4',
+    color: '#41807c',
+    width: 300,
+  })
+  if (result.color === 'green') {
+    const idx = items.value.findIndex(item => item.p_id._id === product)
+    items.value[idx].quantity += quantity
+    if (items.value[idx].quantity <= 0) {
+      items.value.splice(idx, 1)
+    }
+  }
+}
 </script>
+
+<style>
+.main-box {
+  padding: 20px;
+  max-width: 80%;
+}
+</style>

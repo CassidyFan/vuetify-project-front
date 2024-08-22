@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <v-container class="login">
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">登入</h1>
+        <h1>Login</h1>
       </v-col>
       <v-divider></v-divider>
       <v-col cols="12">
@@ -21,7 +21,9 @@
             :error-messages="password.errorMessage.value"
           ></v-text-field>
           <div class="text-center">
-            <v-btn type="submit" color="green" :loading="isSubmitting">登入</v-btn>
+            <v-btn class="login-btn" type="submit" color="black" :loading="isSubmitting">登入</v-btn>
+            <a href="#"><p class="text-end" style="padding-top: 10px; padding-bottom: 10px;">忘記密碼</p></a>
+            <v-btn class="register-btn" color="black"  to="/register">新會員註冊</v-btn>
           </div>
         </v-form>
       </v-col>
@@ -40,7 +42,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '購物網 | 註冊',
+    title: 'qwiyeo | 登入',
     login: false,
     admin: false
   }
@@ -96,3 +98,19 @@ const submit = handleSubmit(async (values) => {
   }
 })
 </script>
+
+<style scoped>
+.login {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.login-btn {
+  width: 100%;
+  height: 50px;
+}
+
+.register-btn {
+  width: 100%;
+  height: 50px;
+}
+</style>
