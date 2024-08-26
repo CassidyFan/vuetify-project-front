@@ -124,10 +124,6 @@ const handleClick = () => {
   .custom-link:hover {
     text-decoration: underline overline;
     font-weight: bolder;
-<<<<<<< HEAD
-=======
-    color: #f5e8d7;
->>>>>>> dffa9d2e573a5da067155887482590441baaffce
   }
 
 .v-card--reveal {
