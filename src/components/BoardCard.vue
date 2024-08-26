@@ -25,12 +25,18 @@
           ></v-avatar>
         </template>
 
+<<<<<<< HEAD
         <v-list-item-title class="title">Cassidy Fan</v-list-item-title>
         <v-list-item-subtitle class="subtitle">qwiyeo Creator</v-list-item-subtitle>
+=======
+        <v-list-item-title>Cassidy Fan</v-list-item-title>
+        <v-list-item-subtitle>qwiyeo Creator</v-list-item-subtitle>
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
         
         <template v-slot:append>
           <v-btn class="eyes-btn" color="white" prepend-icon="mdi-eye" to="/shophere"></v-btn>
           <div class="justify-self-end">
+<<<<<<< HEAD
             <v-icon 
               class="me-1" 
               icon="mdi-heart" 
@@ -38,6 +44,10 @@
               @click="toggleLike">
             </v-icon>
             <span class="subheading me-2">{{ likeCount }}</span>
+=======
+            <v-icon class="me-1" icon="mdi-heart"></v-icon>
+            <span class="subheading me-2">256</span>
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
             <span class="me-1">·</span>
             <v-icon class="me-1" icon="mdi-share-variant" @click="showShareDialog"></v-icon>
             <span class="subheading">45</span>
@@ -77,6 +87,7 @@ const router = useRouter()
 
 const props = defineProps(['_id', 'name', 'description', 'image'])
 const shareDialog = ref(false)
+<<<<<<< HEAD
 const shareUrl = ref('https://cassidyfan.github.io/vuetify-project-front/#/')
 
 const liked = ref(false)
@@ -90,6 +101,13 @@ const toggleLike = () => {
     likeCount.value--
   }
 }
+=======
+const shareUrl = ref('https://www.wda.gov.tw/')
+
+// const viewDetails = () => {
+//   router.push('/boards/' + props._id)
+// }
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 
 const showShareDialog = () => {
   shareDialog.value = true
@@ -124,6 +142,7 @@ const copyToClipboard = () => {
 }
 
 .v-card-actions {
+<<<<<<< HEAD
   margin-top: auto; /* 將 v-card-actions 固定在底部 960.1084*/
 }
 
@@ -166,4 +185,8 @@ const copyToClipboard = () => {
   }
 }
 
+=======
+  margin-top: auto; /* 將 v-card-actions 固定在底部 */
+}
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 </style>

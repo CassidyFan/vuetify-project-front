@@ -2,8 +2,13 @@
   <section id="section01" class="about-background">
     <v-container>
       <v-row class="d-flex align-center justify-center text-center">
+<<<<<<< HEAD
         <v-col cols="12">
           <!-- <v-img md="4"
+=======
+        <v-col cols="12" md="4">
+          <v-img
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
             src="../assets/graywave.jpg"
             alt="About Image"
             class="about-image"
@@ -12,7 +17,11 @@
         </v-col>
         <v-col cols="12" md="4" class="d-flex flex-column justify-center">
           <v-img
+<<<<<<< HEAD
             src="../assets/desk01.jpg"
+=======
+            src="../assets/turtle01.jpg"
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
             alt="centerturtle Image"
             class="centerturtle-image"
             contain
@@ -24,7 +33,11 @@
             alt="sideturtle Image"
             class="sideturtle-image"
             contain
+<<<<<<< HEAD
           ></v-img> -->
+=======
+          ></v-img>
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
         </v-col>
       </v-row>
     </v-container>
@@ -104,13 +117,21 @@
       <v-row class="d-flex align-center justify-center text-center">
         <v-col cols="12" md="6">
           <v-img
+<<<<<<< HEAD
             src="../assets/desk08.jpg"
+=======
+            src="../assets/yellowmok.jpg"
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
             alt="cup Image"
             class="cup-image"
             contain
           ></v-img>
         </v-col>
+<<<<<<< HEAD
         <v-col class="vision-box" cols="12" md="6">
+=======
+        <v-col cols="12" md="6">
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
           <div class="white-box1">
             <h2>Vision</h2>
             <p>
@@ -119,7 +140,11 @@
             <p>< Make green living a habit. ></p>
           </div>
         </v-col>
+<<<<<<< HEAD
         <v-col class="promise-box" cols="12" md="12">
+=======
+        <v-col cols="12" md="12">
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
           <div class="white-box2">
             <h2>Promise</h2>
             <p>每售出一件產品，我們都會將部分收益捐贈給環保組織，如綠色和平台灣分會、台灣環境資訊協會等。通過這種方式，我們希望將愛與關懷傳遞到更多需要幫助的地方。</p>
@@ -172,8 +197,11 @@ import MarQuee from '@/components/MarQuee.vue';
 import { mdiMapMarkerRadiusOutline } from '@mdi/js';
 import { ref } from 'vue';
 import { definePage } from 'vue-router/auto';
+<<<<<<< HEAD
 import aos from 'aos';
 import 'aos/dist/aos.css';
+=======
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 
 definePage({
   meta: {
@@ -256,7 +284,11 @@ const path = ref(mdiMapMarkerRadiusOutline);
 .white-box1 {
   margin: 20px;
   height: 58vh;
+<<<<<<< HEAD
   line-height: 4;
+=======
+  line-height: 5;
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 }
 
 .white-box2 {
@@ -323,6 +355,7 @@ const path = ref(mdiMapMarkerRadiusOutline);
   padding-right: 229px;
   margin: 60px;
 }
+<<<<<<< HEAD
 @media (max-width: 455px) {
   .section-title {
     font-size: 1.5rem;
@@ -358,6 +391,8 @@ const path = ref(mdiMapMarkerRadiusOutline);
   }
 }
 
+=======
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 
 @media (max-width: 600px) {
   .section-title {
@@ -499,6 +534,7 @@ const path = ref(mdiMapMarkerRadiusOutline);
     margin: 10px;
   }
   }
+<<<<<<< HEAD
 
   @media (min-width: 1281px) and (max-width: 1366px) {
   .section-title {
@@ -563,4 +599,6 @@ const path = ref(mdiMapMarkerRadiusOutline);
   }
 }
 }
+=======
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 </style>

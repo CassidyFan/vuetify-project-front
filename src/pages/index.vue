@@ -14,21 +14,32 @@
     >
     </v-carousel-item>
   </v-carousel>
+<<<<<<< HEAD
   <!--
   <v-container>
     <h2 data-aos="fade-right" style="font-family:Shrikhand, serif;padding-top: 30px; color: #212879;font-size: 2rem;">What's New</h2>
+=======
+  <!-- #eb8e24 -->
+  <v-container>
+    <h2 style="font-family:Shrikhand, serif;padding-top: 30px; color: #212879;font-size: 2rem;">What's New</h2>
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
     <v-slide-group
       show-arrows
       v-model="selectedSlide"
       :center-active="true"
       class="pa-7"
+<<<<<<< HEAD
       style="gap: 20px; padding-left: 10px; padding-right: 10px; margin-left: 10px; margin-right: 10px;"
+=======
+      style="gap: 20px;"
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
     >
       <v-slide-item
         v-for="product in products"
         :key="product._id"
         class="pa-8"
       >
+<<<<<<< HEAD
         <ProductCard class="product-card" v-bind="product"></ProductCard>
       </v-slide-item>
     </v-slide-group>
@@ -71,6 +82,13 @@
     <br>
     <br>
   </v-container>
+=======
+        <ProductCard v-bind="product"></ProductCard>
+      </v-slide-item>
+    </v-slide-group>
+    
+  </v-container>
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
   
   <section>
     <StudioSection></StudioSection>
@@ -98,6 +116,7 @@ import ProductCard from '@/components/ProductCard.vue';
 import StudioSection from '@/components/StudioSection.vue';
 import MarQuee from '@/components/MarQuee.vue';
 import SlideGroups from '@/components/SlideGroups.vue';
+<<<<<<< HEAD
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -117,6 +136,15 @@ const items = ref([
   { src: new URL('@/assets/desk02.jpg', import.meta.url).href },
   { src: new URL('@/assets/desk07.jpg', import.meta.url).href },
   { src: new URL('@/assets/desk04.jpg', import.meta.url).href },
+=======
+
+// 使用 import 来确保图片路径正确
+const items = ref([
+  { src: new URL('@/assets/bear01.jpg', import.meta.url).href },
+  { src: new URL('@/assets/bear02.jpg', import.meta.url).href },
+  { src: new URL('@/assets/bear03.jpg', import.meta.url).href },
+  { src: new URL('@/assets/dog01.jpg', import.meta.url).href },
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 ]);
 
 definePage({
@@ -127,6 +155,7 @@ definePage({
   }
 })
 
+<<<<<<< HEAD
 // onMounted(() => {
 // });
 
@@ -140,6 +169,11 @@ onMounted(() => {
 });
 
 
+=======
+onMounted(() => {
+});
+
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 const { api } = useApi();
 const createSnackbar = useSnackbar();
 

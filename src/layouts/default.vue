@@ -24,7 +24,11 @@
     <v-btn to="/shophere">商店</v-btn>
     <v-spacer />
     <a href="/" class="text-center">
+<<<<<<< HEAD
       <img src="@/assets/logo.png" class="logo" style="width: 26%; position: relative; top:7px; left:77px;" />
+=======
+      <img src="@/assets/logo.png" style="width: 26%; position: relative; top:7px; left:77px;" />
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
     </a>
     <v-spacer />
     <template v-if="mobile">
@@ -155,6 +159,7 @@ html, body {
 .v-footer {
   z-index: 1000;
 }
+<<<<<<< HEAD
 
 @media (max-width: 600px) {
   .logo {
@@ -162,4 +167,6 @@ html, body {
   }
 }
 
+=======
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 </style>

@@ -22,7 +22,11 @@
     </div>
     <p style="color: black;">僅提供學習使用</p>
     <div class="year">
+<<<<<<< HEAD
       {{ new Date().getFullYear() }} &copy; <a href="/" class="footer-link">qwiyeo</a>
+=======
+      {{ new Date().getFullYear() }} &copy; qwiyeo
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
     </div>
   </v-footer>
 </template>
@@ -34,11 +38,14 @@
   font-size: 1.5rem;
   margin-top: 10px;
 }
+<<<<<<< HEAD
 
 .footer-link {
   color: white;
   text-decoration: none;
 }
+=======
+>>>>>>> dffa9d2e573a5da067155887482590441baaffce
 </style>
 
 <script>
