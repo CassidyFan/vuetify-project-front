@@ -20,10 +20,7 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "roboto-fontface": "*",
     "sweetalert2": "^11.12.4",
-<<<<<<< HEAD
     "swiper": "^11.1.10",
-=======
->>>>>>> dffa9d2e573a5da067155887482590441baaffce
     "validator": "^13.12.0",
     "vee-validate": "^4.13.1",
     "vue": "^3.4.0",

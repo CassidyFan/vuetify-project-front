@@ -20,17 +20,10 @@
             src="../assets/Taiwanmap.jpg"
             cover
           >
-<<<<<<< HEAD
             <v-card-title style="color:#004D40; font-weight: bolder;" v-if="item.name">{{ item.cityname }}</v-card-title>
           </v-img>
           
           <v-card-subtitle class="pt-4" style="color: #333; font-weight: bolder;">
-=======
-            <v-card-title v-if="item.name">{{ item.cityname }}</v-card-title>
-          </v-img>
-          
-          <v-card-subtitle class="pt-4" style="color: #333;">
->>>>>>> dffa9d2e573a5da067155887482590441baaffce
             {{ item.name }}
           </v-card-subtitle>
 
