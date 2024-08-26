@@ -22,7 +22,7 @@
     </div>
     <p style="color: black;">僅提供學習使用</p>
     <div class="year">
-      {{ new Date().getFullYear() }} &copy; <a href="/" class="footer-link">qwiyeo</a>
+      {{ new Date().getFullYear() }} &copy; <router-link to="/" class="footer-link">qwiyeo</router-link>
     </div>
   </v-footer>
 </template>

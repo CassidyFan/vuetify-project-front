@@ -23,9 +23,13 @@
     <v-btn to="/aboutme">關於我們</v-btn>
     <v-btn to="/shophere">商店</v-btn>
     <v-spacer />
-    <a href="/" class="text-center">
+    <!-- <a href="/" class="text-center">
       <img src="@/assets/logo.png" class="logo" style="width: 26%; position: relative; top:7px; left:77px;" />
-    </a>
+    </a> -->
+    <router-link to="/" class="text-center">
+      <img src="@/assets/logo.png" class="logo" style="width: 26%; position: relative; top:7px; left:77px;" />
+    </router-link>
+
     <v-spacer />
     <template v-if="mobile">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
