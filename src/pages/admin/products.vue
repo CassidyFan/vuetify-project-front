@@ -1,14 +1,14 @@
 <template>
-    <v-container>
-      <v-row>
-        <v-col cols="12">
-          <h1 class="text-center">商品管理</h1>
-        </v-col>
-        <v-col cols="12">
-          <v-btn color="green" @click="openDialog(null)">新增商品</v-btn>
-        </v-col>
-        <v-col cols="12">
-          <v-data-table-server
+  <v-container class="main-box">
+    <v-row>
+      <v-col cols="12">
+        <h1 style="color: #41807c;">商品管理</h1>
+      </v-col>
+      <v-col cols="12">
+        <v-btn color="#41807c" @click="openDialog(null)">新增商品</v-btn>
+      </v-col>
+      <v-col cols="12">
+        <v-data-table-server
           v-model:items-per-page="tableItemsPerPage"
           v-model:sort-by="tableSortBy"
           v-model:page="tablePage"
@@ -38,7 +38,8 @@
             <v-icon icon="mdi-check" v-if="value"></v-icon>
           </template>
           <template #[`item.action`]="{ item }">
-            <v-btn icon="mdi-pencil" variant="text" color="blue" @click="openDialog(item)"></v-btn>
+            <v-btn icon="mdi-lead-pencil" variant="text" color="#212879" @click="openDialog(item)"></v-btn>
+            <v-btn icon="mdi-delete" variant="text" color="#d65c28" @click="deleteItem(item)"></v-btn>
           </template>
         </v-data-table-server>
       </v-col>
@@ -88,8 +89,8 @@
           ></vue-file-agent>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="red" :loading="isSubmitting" @click="closeDialog">取消</v-btn>
-          <v-btn color="green" type="submit" :loading="isSubmitting">送出</v-btn>
+          <v-btn color="#d65c28" :loading="isSubmitting" @click="closeDialog">取消</v-btn>
+          <v-btn color="#212879" type="submit" :loading="isSubmitting">送出</v-btn>
         </v-card-actions>
       </v-card>
     </v-form>
@@ -106,7 +107,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 
 definePage({
   meta: {
-    title: '購物網 | 管理',
+    title: 'qwiyeo | 商品管理',
     login: true,
     admin: true
   }
@@ -144,7 +145,7 @@ const closeDialog = () => {
   fileAgent.value.deleteFileRecord()
 }
 
-const categories = ['衣服', '手機', '遊戲', '食品']
+const categories = ['生活用品', '文具', '周邊']
 const schema = yup.object({
   name: yup
     .string()
@@ -186,7 +187,8 @@ const fileRecords = ref([])
 const rawFileRecords = ref([])
 
 const submit = handleSubmit(async (values) => {
-  if (fileRecords.value.length < 1 || fileRecords.value[0]?.error) return
+  if (fileRecords.value[0]?.error) return
+  if (dialog.value.id.length === 0 && fileRecords.value.length < 1) return
 
   try {
     const fd = new FormData()
@@ -196,7 +198,6 @@ const submit = handleSubmit(async (values) => {
     fd.append('description', values.description)
     fd.append('category', values.category)
     fd.append('sell', values.sell)
-    fd.append('image', fileRecords.value[0].file)
 
     if (fileRecords.value.length > 0) {
       fd.append('image', fileRecords.value[0].file)
@@ -211,7 +212,7 @@ const submit = handleSubmit(async (values) => {
     createSnackbar({
       text: dialog.value.id === '' ? '新增成功' : '編輯成功',
       snackbarProps: {
-        color: 'green'
+        color: '#41807c'
       }
     })
     closeDialog()
@@ -221,7 +222,7 @@ const submit = handleSubmit(async (values) => {
     createSnackbar({
       text: error?.response?.data?.message || '發生錯誤',
       snackbarProps: {
-        color: 'red'
+        color: '#d65c28'
       }
     })
   }
@@ -244,6 +245,7 @@ const tableHeaders = [
 const tableLoading = ref(true)
 const tableItemsLength = ref(0)
 const tableSearch = ref('')
+
 const tableLoadItems = async (reset) => {
   if (reset) tablePage.value = 1
   tableLoading.value = true
@@ -271,10 +273,56 @@ const tableLoadItems = async (reset) => {
   tableLoading.value = false
 }
 tableLoadItems()
+
+const deleteItem = async (item) => {
+  console.log('Deleting item with ID:', item._id)
+  try {
+    const confirmed = confirm(`確定要刪除產品 "${item.name}" 嗎？`)
+    if (!confirmed) return
+
+    await apiAuth.delete(`/product/${item._id}`)
+    
+    createSnackbar({
+      text: '刪除成功',
+      snackbarProps: {
+        color: '#41807c'
+      }
+    })
+    tableLoadItems(true)
+  } catch (error) {
+    console.log(error)
+    createSnackbar({
+      text: error?.response?.data?.message || '發生錯誤',
+      snackbarProps: {
+        color: '#d65c28'
+      }
+    })
+  }
+}
+
 </script>
 
-  <route lang="yaml">
-  meta:
-    layout: admin
-  </route>
-  
+<route lang="yaml">
+meta:
+  layout: admin
+</route>
+
+<style scoped>
+.main-box {
+    width: 100%;
+    margin: auto;
+    padding-top: 20px;
+    background-image: url('/src/assets/greenborder.jpg');
+    background-size: cover; /* 確保圖片覆蓋整個容器 */
+    background-position: center; /* 使圖片保持居中 */
+    background-repeat: no-repeat; /* 防止背景圖片重複 */
+    min-height: 100vh; /* 保證容器最小高度為視窗高度 */
+    /* display: flex; */
+    /* flex-direction: column; */
+    padding:50px;
+  }
+.v-data-table {
+  /* margin-top: 50px; */
+  background-color: rgba(255, 255, 255, 0.6); /* 增加背景透明度以提高可讀性 */
+}
+</style>
