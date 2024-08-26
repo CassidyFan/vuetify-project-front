@@ -40,7 +40,7 @@
             <span class="subheading me-2">{{ likeCount }}</span>
             <span class="me-1">·</span>
             <v-icon class="me-1" icon="mdi-share-variant" @click="showShareDialog"></v-icon>
-            <span class="subheading">45</span>
+            <!-- <span class="subheading">45</span> -->
           </div>
         </template>
       </v-list-item>
