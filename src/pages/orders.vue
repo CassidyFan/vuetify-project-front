@@ -41,6 +41,7 @@ const { apiAuth } = useApi()
 const createSnackbar = useSnackbar()
 
 const items = ref([])
+
 const headers = [
   { title: '編號', key: '_id' },
   { title: '日期', key: 'createdAt', value: item => new Date(item.createdAt).toLocaleString() },
@@ -49,17 +50,39 @@ const headers = [
     title: '金額',
     key: 'price',
     value: item => {
-      return item.cart.reduce((total, current) => {
-        return total + current.quantity * current.p_id.price
-      }, 0)
+      if (item.cart && Array.isArray(item.cart)) {
+        return item.cart.reduce((total, current) => {
+          return total + (current.p_id?.price || 0) * (current.quantity || 0)
+        }, 0)
+      }
+      return 0
     }
   }
 ]
 
+// const headers = [
+//   { title: '編號', key: '_id' },
+//   { title: '日期', key: 'createdAt', value: item => new Date(item.createdAt).toLocaleString() },
+//   { title: '商品', key: 'cart', sortable: false },
+//   {
+//     title: '金額',
+//     key: 'price',
+//     value: item => {
+//       return item.cart.reduce((total, current) => {
+//         return total + current.quantity * current.p_id.price
+//       }, 0)
+//     }
+//   }
+// ]
+
 const loadItems = async () => {
   try {
     const { data } = await apiAuth.get('/order')
-    items.value.push(...data.result)
+    if (Array.isArray(data.result)) {
+      items.value = data.result // 直接替換 items 的值
+    } else {
+      console.error('Data result is not an array:', data.result)
+    }
   } catch (error) {
     console.log(error)
     createSnackbar({
@@ -70,6 +93,21 @@ const loadItems = async () => {
     })
   }
 }
+
+// const loadItems = async () => {
+//   try {
+//     const { data } = await apiAuth.get('/order')
+//     items.value.push(...data.result)
+//   } catch (error) {
+//     console.log(error)
+//     createSnackbar({
+//       text: error?.response?.data?.message || '發生錯誤',
+//       snackbarProps: {
+//         color: 'red'
+//       }
+//     })
+//   }
+// }
 loadItems()
 </script>
 

@@ -14,8 +14,8 @@
     >
     </v-carousel-item>
   </v-carousel>
-  <!--
-  <v-container>
+  
+  <!-- <v-container>
     <h2 data-aos="fade-right" style="font-family:Shrikhand, serif;padding-top: 30px; color: #212879;font-size: 2rem;">What's New</h2>
     <v-slide-group
       show-arrows
@@ -32,11 +32,10 @@
         <ProductCard class="product-card" v-bind="product"></ProductCard>
       </v-slide-item>
     </v-slide-group>
-  </v-container>
-  -->
+  </v-container> -->
+ 
 
   <v-container>
-    <!-- 123456 -->
     <h2 data-aos="fade-right" style="font-family:Shrikhand, serif;padding-top: 30px;padding-bottom: 50px; color: #212879;font-size: 2rem;">What's New</h2>
     <swiper     
        :navigation="true" 
@@ -59,13 +58,11 @@
        }"
     >
       <swiper-slide 
-       v-for="product in products" :key="product._id">
-         <ProductCard class="product-card" v-bind="product"></ProductCard>
+        v-for="product in products"
+        :key="product._id">
+
+      <ProductCard class="product-card" v-bind="product"></ProductCard>
       </swiper-slide>
-      <!-- <swiper-slide>Slide 2</swiper-slide><swiper-slide>Slide 3</swiper-slide>
-      <swiper-slide>Slide 4</swiper-slide><swiper-slide>Slide 5</swiper-slide>
-      <swiper-slide>Slide 6</swiper-slide><swiper-slide>Slide 7</swiper-slide>
-      <swiper-slide>Slide 8</swiper-slide><swiper-slide>Slide 9</swiper-slide> -->
     </swiper>
     <br>
     <br>

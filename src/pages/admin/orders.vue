@@ -41,6 +41,22 @@ const { apiAuth } = useApi()
 const createSnackbar = useSnackbar()
 
 const items = ref([])
+// const headers = [
+//   { title: '編號', key: '_id' },
+//   { title: '帳號', key: 'user.account' },
+//   { title: '日期', key: 'createdAt', value: item => new Date(item.createdAt).toLocaleString() },
+//   { title: '商品', key: 'cart', sortable: false },
+//   {
+//     title: '金額',
+//     key: 'price',
+//     value: item => {
+//       return item.cart.reduce((total, current) => {
+//         return total + current.quantity * current.p_id.price
+//       }, 0)
+//     }
+//   }
+// ]
+
 const headers = [
   { title: '編號', key: '_id' },
   { title: '帳號', key: 'user.account' },
@@ -51,7 +67,10 @@ const headers = [
     key: 'price',
     value: item => {
       return item.cart.reduce((total, current) => {
-        return total + current.quantity * current.p_id.price
+        if (current.p_id && current.p_id.price) {
+          return total + current.quantity * current.p_id.price
+        }
+        return total 
       }, 0)
     }
   }
@@ -60,6 +79,7 @@ const headers = [
 const loadItems = async () => {
   try {
     const { data } = await apiAuth.get('/order/all')
+    console.log(data.result)
     items.value.push(...data.result)
   } catch (error) {
     console.log(error)
@@ -72,6 +92,7 @@ const loadItems = async () => {
   }
 }
 loadItems()
+
 </script>
 
 <style scoped>
