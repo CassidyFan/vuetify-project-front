@@ -89,7 +89,7 @@ const itemsPerPage = 18
 
 onMounted(async () => {
   try {
-    const response = await axios.get('https://data.moenv.gov.tw/api/v2/epr_p_02?api_key=e8dd42e6-9b8b-43f8-991e-b3dee723a52d&limit=1000&sort=ImportDate%20desc&format=JSON')
+    const response = await axios.get('https://data.moenv.gov.tw/api/v2/epr_p_02?api_key=58d6040c-dca7-407f-a244-d0bfdfa8144a&limit=1000&sort=ImportDate desc&format=JSON')
     items.value = response.data.records || [] // 確保 items 為數組
   } catch (error) {
     console.error('Error fetching data:', error)
